@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link
+            rel="icon"
+            type="image/png"
+            href="/BlogSmith-favicon-cropped-bg-removed.png"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>BlogSmith</title>
+    </head>
+    <body style="background-color: #1f2937">
+        <script>
+            // Apply theme from localStorage before React renders
+            const theme = localStorage.getItem("theme") || "dark"; // Default to 'dark'
+            const html = document.documentElement;
+            if (theme === "dark") {
+                html.classList.add("dark");
+            } else {
+                html.classList.remove("dark");
+            }
+        </script>
+        <div id="root"></div>
+        <script type="module" src="/src/main.jsx"></script>
+    </body>
+</html>

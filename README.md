@@ -7,6 +7,10 @@ Welcome to **BlogSmith**, a sleek and modern blogging platform built with React 
 
 **Note: This repository was created for deployment on Vercel and is a copy of the original project, which was developed over time. You can view the full commit history in the original repository [here](https://github.com/kaustubh-tripathi-1/web-dev/tree/main/React/blog-post).**
 
+## 🌐 Live Demo
+
+Check out the live app at [https://blogsmith-psi.vercel.app](https://blogsmith-psi.vercel.app).
+
 ---
 
 ## 🚀 Features

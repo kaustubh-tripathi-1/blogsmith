@@ -5,6 +5,8 @@
 
 Welcome to **BlogSmith**, a sleek and modern blogging platform built with React and Appwrite. Whether you're a writer looking to share your ideas or a reader eager to explore new content, BlogSmith provides a seamless experience to create, read, and manage blog posts effortlessly.
 
+**Note: This repository was created for deployment on Vercel and is a copy of the original project, which was developed over time. You can view the full commit history in the original repository [here](https://github.com/kaustubh-tripathi-1/web-dev/tree/main/React/blog-post).**
+
 ---
 
 ## 🚀 Features
@@ -32,8 +34,6 @@ Welcome to **BlogSmith**, a sleek and modern blogging platform built with React 
 - **`react-router`**: For navigation and routing.
 - **`prism-react-renderer`**: For syntax highlighting.
 - **`vite`**: Fast build tool and development server.  
-#### Note: I created a new repo for deployment, that is why there is only a single commit. For commits and commit history, go [here](https://github.com/kaustubh-tripathi-1/web-dev/tree/main/React/blog-post)
-
 
 ---
 
@@ -48,18 +48,18 @@ Follow these steps to get BlogSmith up and running locally:
 
 ### Steps
 1. **Clone the Repository**
-   ```bash
+   ``` bash
    git clone https://github.com/kaustubh-tripathi-1/blogsmith.git
    cd blogsmith
    ```
 
 2. **Install Dependencies**
-   ```bash
+   ``` bash
    npm install
    # or
    yarn install
    ```
-    Note: Use --legacy-peer-deps flag to ignore peer dependency conflicts as the used version of tinymce is not fully compatible with react-v19. 
+    **Important Note: Use --legacy-peer-deps flag to ignore peer dependency conflicts as the used version of tinymce is not fully compatible with react-v19.**
 
 3. **Set Up Appwrite**
    - Create a new project in your Appwrite instance (e.g., named "BlogSmith").
@@ -68,13 +68,13 @@ Follow these steps to get BlogSmith up and running locally:
 
 4. **Configure Environment Variables**
    Create a `.env` file in the root directory and add your Appwrite configuration:
-   ```env
+   ``` env
    VITE_APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
    VITE_APPWRITE_PROJECT_ID=your_project_id
    ```
 
 5. **Run the Development Server**
-   ```bash
+   ``` bash
    npm run dev
    # or
    yarn dev

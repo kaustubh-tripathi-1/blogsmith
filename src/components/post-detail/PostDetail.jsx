@@ -24,6 +24,7 @@ export default function PostDetail() {
     const [isMoveToTopVisible, setIsMoveToTopVisible] = useState(false);
 
     const topRef = useRef(null);
+    const lastSlugRef = useRef(null);
 
     // Parse content with syntax highlighting
     const parsedContent = useMemo(() => {
@@ -71,7 +72,7 @@ export default function PostDetail() {
     // Fetch post on mount or slug change
     useEffect(() => {
         setisLoading(true);
-        if (slug) {
+        if (slug && lastSlugRef.current !== slug) {
             dispatch(fetchPostBySlug(slug)).finally(() => {
                 setisLoading(false);
             });
@@ -93,6 +94,8 @@ export default function PostDetail() {
             }
         };
 
+        lastSlugRef.current = slug;
+
         window.addEventListener("scroll", handleScroll);
 
         return () => {
@@ -100,16 +103,19 @@ export default function PostDetail() {
         };
     }, []);
 
+    // Reset scroll position to top for PUSH navigations after content loads
     useEffect(() => {
-        // Move to top automatically when the component mounts ignoring
-        if (currentPost && topRef.current) {
-            topRef?.current?.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-                inline: "nearest",
-            });
+        if (!isLoading) {
+            const navigationType = sessionStorage.getItem("navigationType");
+
+            if (navigationType === "PUSH") {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+            }
         }
-    }, [currentPost]);
+    }, [isLoading]);
 
     /**
      * Navigates to the post editor.

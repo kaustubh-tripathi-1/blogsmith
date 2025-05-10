@@ -1,4 +1,9 @@
-import { createBrowserRouter, RouterProvider, useLocation } from "react-router";
+import {
+    createBrowserRouter,
+    RouterProvider,
+    useLocation,
+    useNavigationType,
+} from "react-router";
 import Layout from "./components/layout/Layout";
 import {
     Home,
@@ -33,9 +38,15 @@ import { setPreferences, setProfile } from "./slices/userSlice";
  */
 function PathPersistor() {
     const location = useLocation();
+    const navigationType = useNavigationType(); // "PUSH", "POP", or "REPLACE"
+
     useEffect(() => {
+        // Store the last path for redirect handling
         sessionStorage.setItem("lastPath", location.pathname);
-    }, [location.pathname]);
+
+        // Set a flag to indicate the navigation type
+        sessionStorage.setItem("navigationType", navigationType);
+    }, [location.pathname, navigationType]);
     return null;
 }
 

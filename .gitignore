@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 .env
+blogsmith.code-workspace
 
 # Editor directories and files
 .vscode/*

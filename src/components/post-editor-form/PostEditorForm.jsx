@@ -363,6 +363,11 @@ export default function PostEditorForm() {
                             className="w-fit px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm hover:shadow-lg dark:shadow-cyan-800/50 cursor-pointer file:mr-[20%] file:rounded-lg file:bg-gray-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-gray-800 hover:file:bg-gray-300 dark:file:bg-gray-800 dark:file:text-violet-100 dark:hover:file:bg-gray-500 transition-all duration-300"
                             disabled={loading}
                         />
+                        <p className="text-xs text-gray-700 dark:text-gray-300 ml-1 mt-1">
+                            Please use original images or source from
+                            royalty-free platforms like Unsplash. Avoid using
+                            copyrighted images without permission.
+                        </p>
                         {uploading && (
                             <span className="w-3/24 flex flex-col md:flex-row justify-between items-center mt-1">
                                 <p className=" text-sm text-gray-600 dark:text-gray-400">

@@ -83,8 +83,8 @@ export default function PostDetail() {
         };
     }, [dispatch, slug]);
 
-    // Handle visibility of Move to Top button
     useEffect(() => {
+        // Handle visibility of Move to Top button
         const handleScroll = () => {
             if (window.scrollY > 1000) {
                 setIsMoveToTopVisible(true);
@@ -98,7 +98,18 @@ export default function PostDetail() {
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
-    });
+    }, []);
+
+    useEffect(() => {
+        // Move to top automatically when the component mounts ignoring
+        if (currentPost && topRef.current) {
+            topRef?.current?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+                inline: "nearest",
+            });
+        }
+    }, [currentPost]);
 
     /**
      * Navigates to the post editor.
@@ -176,6 +187,7 @@ export default function PostDetail() {
                         ? "opacity-100"
                         : "opacity-0 pointer-events-none"
                 }`}
+                aria-label="Move to top"
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"

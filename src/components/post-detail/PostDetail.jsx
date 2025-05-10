@@ -8,6 +8,7 @@ import { PostDetailSkeleton, Spinner } from "../componentsIndex";
 import { CodeBlock } from "../componentsIndex";
 import DOMPurify from "dompurify";
 import { openModal } from "../../slices/uiSlice";
+import { setLoading } from "../../slices/postEditorSlice";
 
 /**
  * Displays a single blog post with edit/delete options for authors.
@@ -72,10 +73,12 @@ export default function PostDetail() {
     // Fetch post on mount or slug change
     useEffect(() => {
         setisLoading(true);
-        if (slug && lastSlugRef.current !== slug) {
+        if (slug) {
             dispatch(fetchPostBySlug(slug)).finally(() => {
                 setisLoading(false);
             });
+        } else {
+            setLoading(false);
         }
 
         // Cleanup on unmount
@@ -93,8 +96,6 @@ export default function PostDetail() {
                 setIsMoveToTopVisible(false);
             }
         };
-
-        lastSlugRef.current = slug;
 
         window.addEventListener("scroll", handleScroll);
 

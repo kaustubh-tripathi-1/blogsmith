@@ -159,8 +159,6 @@ function Modal({ modalType, modalData, children }) {
         children,
     ]);
 
-    if (!isModalOpen) return null;
-
     // Handle logout
     const handleLogout = useCallback(async () => {
         try {
@@ -189,7 +187,7 @@ function Modal({ modalType, modalData, children }) {
             }
             handleClose();
         }
-    }, [dispatch, navigate, handleClose]);
+    }, [dispatch, navigate, handleClose, preferences?.notifications]);
 
     // Handle post deletion
     const handleDeletePost = useCallback(async () => {
@@ -226,7 +224,13 @@ function Modal({ modalType, modalData, children }) {
             }
             handleClose();
         }
-    }, [dispatch, modalData, navigate, handleClose]);
+    }, [
+        dispatch,
+        modalData,
+        navigate,
+        handleClose,
+        preferences?.notifications,
+    ]);
 
     // Modal configurations based on type
     const modalConfigs = {
@@ -265,6 +269,8 @@ function Modal({ modalType, modalData, children }) {
         confirmAction: handleClose,
         isLoading: false,
     };
+
+    if (!isModalOpen) return null;
 
     return createPortal(
         <div

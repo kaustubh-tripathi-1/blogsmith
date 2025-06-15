@@ -42,7 +42,7 @@ export default function Signup() {
 
     async function signupOnSubmit(data) {
         try {
-            const user = await dispatch(signupUser(data)).unwrap();
+            await dispatch(signupUser(data)).unwrap();
             // Create temporary session to send verification email to user
             await dispatch(
                 createTempSession({
@@ -221,7 +221,6 @@ export default function Signup() {
                             />
                             <button
                                 type="button"
-                                tabIndex="-1"
                                 onClick={togglePasswordVisibility}
                                 className="absolute top-1/2 -translate-y-1/2 right-0 flex items-center pr-3 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none cursor-pointer"
                                 aria-label={
@@ -312,7 +311,6 @@ export default function Signup() {
                             />
                             <button
                                 type="button"
-                                tabIndex="-1"
                                 onClick={toggleConfirmPasswordVisibility}
                                 className="absolute top-1/2 -translate-y-1/2 right-0 flex items-center pr-3 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none cursor-pointer"
                                 aria-label={

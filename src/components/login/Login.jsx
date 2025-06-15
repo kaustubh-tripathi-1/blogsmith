@@ -187,7 +187,6 @@ export default function Login() {
                             <button
                                 type="button"
                                 onClick={togglePasswordVisibility}
-                                tabIndex="-1"
                                 className="absolute top-1/2 -translate-y-1/2 right-0 flex items-center pr-3 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none cursor-pointer"
                                 aria-label={
                                     isPasswordShowing

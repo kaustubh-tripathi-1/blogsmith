@@ -369,7 +369,6 @@ export default function EditProfile() {
                                     ? "Hide password"
                                     : "Show password"
                             }
-                            tabIndex="-1"
                         >
                             {!isCurrentPasswordShowing ? (
                                 <svg
@@ -456,7 +455,6 @@ export default function EditProfile() {
                                     ? "Hide password"
                                     : "Show password"
                             }
-                            tabIndex="-1"
                         >
                             {!isNewPasswordShowing ? (
                                 <svg
@@ -539,7 +537,6 @@ export default function EditProfile() {
                                     ? "Hide password"
                                     : "Show password"
                             }
-                            tabIndex="-1"
                         >
                             {!isConfirmPasswordShowing ? (
                                 <svg

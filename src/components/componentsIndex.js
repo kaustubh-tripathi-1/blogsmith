@@ -68,7 +68,6 @@ export { default as Layout } from "./layout/Layout.jsx";
 export { default as Footer } from "./footer/Footer.jsx";
 export { default as Login } from "./login/Login.jsx";
 export { default as Signup } from "./signup/Singup.jsx";
-export { default as BlogEditor } from "./blog-editor/BlogEditor.jsx";
 export { default as About } from "./about/About.jsx";
 export { default as Contact } from "./contact/Contact.jsx";
 export { default as HomePostCardSkeleton } from "./skeletons/HomePostCardSkeleton.jsx";

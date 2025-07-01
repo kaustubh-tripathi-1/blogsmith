@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
@@ -18,9 +18,11 @@ import {
     uploadFeatureImage,
 } from "../../slices/storageSlice";
 import { fetchPostBySlug, setCurrentPost } from "../../slices/postsSlice";
-import { Spinner, BlogEditor } from "../componentsIndex";
+import { Spinner /* , BlogEditor */ } from "../componentsIndex";
 import { storageService } from "../../appwrite-services/storage";
 import { addNotification, openModal } from "../../slices/uiSlice";
+
+const BlogEditor = lazy(() => import("../blog-editor/BlogEditor"));
 
 /**
  * Form for creating or editing blog posts with Appwrite.
@@ -33,7 +35,6 @@ export default function PostEditorForm() {
         title,
         content,
         featureImage,
-        status,
         isEditing,
         loading,
         error,
@@ -52,7 +53,6 @@ export default function PostEditorForm() {
         control,
         trigger,
         watch,
-        reset,
         formState: { errors },
     } = useForm({
         mode: "onChange",
@@ -105,7 +105,7 @@ export default function PostEditorForm() {
         return () => {
             dispatch(resetEditor());
         };
-    }, [slug, dispatch, navigate, setValue]);
+    }, [slug, dispatch, navigate, setValue, trigger]);
 
     /**
      * Handles post creation or update on form submission.
@@ -408,13 +408,22 @@ export default function PostEditorForm() {
                                 *
                             </sup>
                         </label>
-                        <BlogEditor
-                            {...register("content", {
-                                required: "Content is required",
-                            })}
-                            initialValue={content}
-                            control={control}
-                        />
+                        <Suspense
+                            fallback={
+                                <div className="w-full min-h-dvh flex justify-center items-center">
+                                    {" "}
+                                    <Spinner size="4" />
+                                </div>
+                            }
+                        >
+                            <BlogEditor
+                                {...register("content", {
+                                    required: "Content is required",
+                                })}
+                                initialValue={content}
+                                control={control}
+                            />
+                        </Suspense>
                         {errors.content && (
                             <p className="mt-1 text-sm text-red-500 dark:text-red-400">
                                 {errors.content.message}

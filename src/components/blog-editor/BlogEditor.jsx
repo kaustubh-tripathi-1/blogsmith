@@ -31,12 +31,7 @@ import "tinymce/skins/ui/oxide/skin.min.css";
 // import "tinymce/skins/ui/oxide/content.min.css";
 // import "tinymce/skins/content/default/content.min.css";
 
-export default function BlogEditor({
-    name = `content`,
-    initialValue = "",
-    control,
-    ...props
-}) {
+export default function BlogEditor({ name = `content`, control, ...props }) {
     const editorRef = useRef(null);
     const { theme } = useSelector((state) => state.ui);
 
@@ -58,7 +53,7 @@ export default function BlogEditor({
                         onInit={(_evt, editor) => (editorRef.current = editor)}
                         key={theme}
                         value={value}
-                        onEditorChange={(newContent, editor) => {
+                        onEditorChange={(newContent) => {
                             onChange(newContent); // Update form state
                             // dispatch(setContent(newContent)); // Update Redux state
                         }}

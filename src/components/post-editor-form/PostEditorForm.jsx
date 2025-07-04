@@ -52,6 +52,7 @@ export default function PostEditorForm() {
         setValue,
         control,
         trigger,
+        reset,
         watch,
         formState: { errors },
     } = useForm({
@@ -100,6 +101,13 @@ export default function PostEditorForm() {
             // Create mode
             dispatch(setIsEditing(false));
             dispatch(resetEditor());
+            reset({
+                slug: "",
+                title: "",
+                content: "",
+                featureImage: "",
+                status: "active",
+            });
         }
 
         return () => {
